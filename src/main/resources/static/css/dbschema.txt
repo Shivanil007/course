@@ -1,0 +1,7 @@
+create table course(
+	courseId int primary key,
+    courseName varchar(255),
+    courseDescription varchar(255),
+    author varchar(255),
+    price int
+    );
