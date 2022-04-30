@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CourseApplication<course>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.course.CourseApplication",
+            "projectName": "course",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
