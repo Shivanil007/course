@@ -2,8 +2,10 @@ package com.example.course.datamodels;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "course")
 public class Course {
 
     @Id
