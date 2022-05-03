@@ -25,8 +25,6 @@ public class UserController extends ApplicationController {
     public ModelAndView userHome() {
         ModelAndView modelAndView = new ModelAndView();
         List<Course> courses = this.courseRepository.findAll();
-        System.out.println(courses.size());
-        courses.stream().forEach(x -> System.out.println(x.getCourseName()));
         modelAndView.addObject("courses", courses);
         modelAndView.setViewName("userHome");
         return modelAndView;

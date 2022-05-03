@@ -1,7 +1,9 @@
 create table course(
-	courseId int primary key,
-    courseName varchar(255),
-    courseDescription varchar(255),
+	course_id int primary key,
+    course_name varchar(255),
+    course_description varchar(255),
     author varchar(255),
     price int
     );
+
+insert into course values(101, 'Java', 'The complete reference', 'H schildt', 700);    
