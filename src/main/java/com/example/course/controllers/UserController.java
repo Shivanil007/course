@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -30,5 +31,13 @@ public class UserController extends ApplicationController {
         return modelAndView;
     }
 
+    @GetMapping("/purchase-course")
+    public ModelAndView purchase(@RequestParam(name = "id") String courseId) {
+        Course course = this.courseRepository.findCourseByCourseId(Integer.parseInt(courseId.trim()));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("course", course);
+        modelAndView.setViewName("purchaseNow");
+        return modelAndView;
+    }
 
 }

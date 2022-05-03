@@ -20,7 +20,7 @@
             <td th:text="${course.courseDescription}"></td>
             <td th:text="${course.author}"></td>
             <td th:text="${course.price}"></td>
-            <td><a href="/user/purchase-course"><button type="button" class="btn btn-secondary">Purchase</button></a></td>
+            <td><a th:href="@{/user/purchase-course(id=${course.courseId})}"><button type="button" class="btn btn-secondary">Purchase</button></a></td>
         </tr>
     </table>
         <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
