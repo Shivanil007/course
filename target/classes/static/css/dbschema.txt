@@ -6,4 +6,10 @@ create table course(
     price int
     );
 
-insert into course values(101, 'Java', 'The complete reference', 'H schildt', 700);    
+insert into course values(101, 'Java', 'The complete reference', 'H schildt', 700);
+
+create table transaction (
+	username varchar(255),
+    course_id int,
+    transaction_id int primary key auto_increment
+);

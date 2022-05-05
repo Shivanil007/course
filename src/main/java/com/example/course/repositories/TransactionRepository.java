@@ -7,4 +7,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 
     Transaction findTransactionByTransactionId (int transactionId);
 
+    Transaction findTransactionByCourseId(int courseId);
+
 }

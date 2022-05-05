@@ -13,7 +13,10 @@
 <div>
     You are going to purchase <p th:text="${course.courseName}"></p>
 </div>
-<button type="button" class="btn btn-primary btn-lg">Purchase Now</button>
+<form action="#" th:action="@{/user/perform-transaction}" th:object="${course}" method="post">
+    <input type="hidden" th:field="*{courseId}">
+    <button type="submit" class="btn btn-primary btn-lg">Purchase Now</button>
+</form>
 
 </body>
 </html>

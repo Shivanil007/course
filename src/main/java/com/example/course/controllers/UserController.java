@@ -1,14 +1,15 @@
 package com.example.course.controllers;
 
 import com.example.course.datamodels.Course;
+import com.example.course.datamodels.Transaction;
 import com.example.course.repositories.CourseRepository;
+import com.example.course.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -16,10 +17,12 @@ import java.util.List;
 public class UserController extends ApplicationController {
 
     private CourseRepository courseRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    public UserController(CourseRepository courseRepository) {
+    public UserController(CourseRepository courseRepository, TransactionRepository transactionRepository) {
         this.courseRepository = courseRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     @GetMapping("/home")
@@ -38,6 +41,18 @@ public class UserController extends ApplicationController {
         modelAndView.addObject("course", course);
         modelAndView.setViewName("purchaseNow");
         return modelAndView;
+    }
+    @PostMapping("/perform-transaction")
+    public String transaction(@ModelAttribute Course course, Principal principal) {
+        Transaction transaction = new Transaction();
+        transaction.setUsername(principal.getName());
+        transaction.setCourseId(course.getCourseId());
+        if (this.transactionRepository.findTransactionByCourseId(course.getCourseId()) !=  null) {
+
+            return "purchaseNow";
+        }
+        this.transactionRepository.save(transaction);
+        return "redirect:/user/home";
     }
 
 }
