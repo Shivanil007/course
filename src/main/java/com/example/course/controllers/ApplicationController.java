@@ -45,7 +45,6 @@ public class ApplicationController {
     public String login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (! (auth instanceof AnonymousAuthenticationToken)) {
-            System.out.println("hello");
             return "redirect:/user";
         }
         return "login";
@@ -60,7 +59,6 @@ public class ApplicationController {
     public String signup(User user) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (! (auth instanceof AnonymousAuthenticationToken)) {
-            System.out.println("sign up hello");
             return "redirect:/user/";
         }
         return "signup";
