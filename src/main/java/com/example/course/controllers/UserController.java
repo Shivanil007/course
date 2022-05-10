@@ -25,7 +25,7 @@ public class UserController extends ApplicationController {
     private FeedbackRepository feedbackRepository;
 
     @Autowired
-    public UserController(CourseRepository courseRepository, TransactionRepository transactionRepository) {
+    public UserController(CourseRepository courseRepository, TransactionRepository transactionRepository, FeedbackRepository feedbackRepository) {
         this.courseRepository = courseRepository;
         this.transactionRepository = transactionRepository;
         this.feedbackRepository = feedbackRepository;
