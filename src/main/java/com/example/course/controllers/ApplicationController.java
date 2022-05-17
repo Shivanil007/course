@@ -46,6 +46,7 @@ public class ApplicationController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (! (auth instanceof AnonymousAuthenticationToken)) {
             return "redirect:/user";
+
         }
         return "login";
     }
