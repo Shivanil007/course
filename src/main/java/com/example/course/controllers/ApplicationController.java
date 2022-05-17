@@ -34,12 +34,9 @@ public class ApplicationController {
     @GetMapping({"/", "/user"})
     public RedirectView home(Principal principal) {
         User user = this.userRepository.findByUsername(principal.getName());
-        System.out.println("I am before if else");
-        System.out.println(user.getRole());
         if (user.getRole().equals(UserRoles.USER)) {
             return new RedirectView("/user/home");
         } else {
-            System.out.println("I am in login api");
             return new RedirectView("/admin/home");
         }
     }
@@ -47,9 +44,7 @@ public class ApplicationController {
     @RequestMapping("/login")
     public String login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("this is login");
         if (! (auth instanceof AnonymousAuthenticationToken)) {
-            System.out.println("this is loginout");
             return "redirect:/user";
 
         }

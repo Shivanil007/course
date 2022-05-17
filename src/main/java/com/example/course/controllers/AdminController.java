@@ -46,13 +46,27 @@ public class AdminController  {
         this.transactionRepository.save(transaction);
         return "redirect:/user/home";
     }
-    @GetMapping("/")
+    @GetMapping("/add-course")
     public ModelAndView addCourse() {
+
         ModelAndView modelAndView = new ModelAndView();
-        List<
-                modelAndView.addObject("")
-                modelAndView.setViewName("addcourse");
+        modelAndView.setViewName("addcourse");
         return modelAndView;
     }
+    @GetMapping("/delete-course")
+    public  ModelAndView deleteCourse() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.setViewName("deletecourse");
+    return modelAndView;
+    }
+    @PostMapping("/save-course")
+    public String saveCourse (@ModelAttribute Course course, Principal principal) {
+        System.out.println("this is save course");
+        course.setCourseId(course.getCourseId());
+        this.courseRepository.save(course);
+        return "redirect:/admin/home";
+
+    }
+
 
 }
